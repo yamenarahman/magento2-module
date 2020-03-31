@@ -1,0 +1,143 @@
+<?php
+/**
+ * @var Ultimate/Onyx/Block/Settings $block
+ */
+ ?>
+<form class="form" action="<?php echo $block->getFormAction() ?>" method="POST" onsubmit="return confirm('Are you sure to update Onyx ERP settings?');">
+
+    <fieldset class="fieldset">
+        <legend class="legend">
+            <span><strong>API Settings</strong></span>
+        </legend>
+        <br>
+        <br>
+        <div class="field required">
+            <label for="api_url" class="label">
+                <span>API Url</span>
+            </label>
+            <div class="control">
+                <input type="text" id="api_url" name="api_url" class="input-text" value="<?php echo getenv('API_URL') ?>" required>
+            </div>
+        </div>
+        <br>
+        <div class="field required">
+            <label for="access_key" class="label">
+                <span>Access key</span>
+            </label>
+            <div class="control">
+                <input type="text" id="access_key" name="access_key" class="input-text">
+            </div>
+        </div>
+        <br>
+        <div class="field required">
+            <label for="access_token" class="label">
+                <span>Access Token</span>
+            </label>
+            <div class="control">
+                <input type="text" id="access_token" name="access_token" class="input-text">
+            </div>
+        </div>
+        <br>
+        <div class="field required">
+            <label for="language_id" class="label">
+                <span>Language ID</span>
+            </label>
+            <div class="control">
+                <input type="text" id="language_id" name="language_id" class="input-text" value="<?php echo getenv('LANGUAGE_ID') ?>">
+            </div>
+        </div>
+        <br>
+        <div class="field required">
+            <label for="accounting_year" class="label">
+                <span>Accounting Year</span>
+            </label>
+            <div class="control">
+                <input type="number" id="accounting_year" name="accounting_year" class="input-text" min="1900" value="<?php echo getenv('ACCOUNTING_YEAR') ?>">
+            </div>
+        </div>
+        <br>
+        <div class="field required">
+            <label for="activity_number" class="label">
+                <span>Activity Number</span>
+            </label>
+            <div class="control">
+                <input type="number" id="activity_number" name="activity_number" class="input-text" min="0" value="<?php echo getenv('ACTIVITY_NUMBER') ?>">
+            </div>
+        </div>
+        <br>
+        <div class="field required">
+            <label for="branch_number" class="label">
+                <span>Branch Number</span>
+            </label>
+            <div class="control">
+                <input type="number" id="branch_number" name="branch_number" class="input-text" min="0" value="<?php echo getenv('BRANCH_NUMBER') ?>">
+            </div>
+        </div>
+        <br>
+        <div class="field required">
+            <label for="warehouse_code" class="label">
+                <span>Warehouse Code</span>
+            </label>
+            <div class="control">
+                <input type="number" id="warehouse_code" name="warehouse_code" class="input-text" min="0" value="<?php echo getenv('WAREHOUSE_CODE') ?>">
+            </div>
+        </div>
+        <br>
+        <div class="field required">
+            <label for="images_url" class="label">
+                <span>Images Base Url</span>
+            </label>
+            <div class="control">
+                <input type="text" id="images_url" name="images_url" class="input-text" value="<?php echo getenv('IMAGES_URL') ?>">
+            </div>
+        </div>
+        <br>
+        <div class="field required">
+            <label for="qty" class="label">
+                <span>Product Quantity</span>
+            </label>
+            <br>
+            <input type="radio" class="input-radio" name="qty" id="qty" value="0" checked>
+            Available Quantity
+            <input type="radio" class="input-radio" name="qty" id="qty" value="1">
+            Available With Reserved
+        </div>
+        <input name="form_key" type="hidden" value="<?php echo $block->getFormKey() ?>" />
+
+        <br>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" class="action submit primary" title="Save">
+                    <span>Save</span>
+                </button>
+            </div>
+        </div>
+    </fieldset>
+
+</form>
+<br>
+<form class="form" action="<?php echo $block->getFormAction() ?>" method="POST" onsubmit="return confirm('Are you sure to start sync process now?');">
+    <input type="hidden" name="now" value="true">
+    <input name="form_key" type="hidden" value="<?php echo $block->getFormKey() ?>" />
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action submit primary" title="Save">
+                <span>Sync now</span>
+            </button>
+        </div>
+    </div>
+</form>
+<p><i>Sync all modules instantly.</i></p>
+
+<form class="form" action="<?php echo $block->getFormAction() ?>" method="POST" onsubmit="return confirm('Are you sure to revert all products and categories?');">
+    <input type="hidden" name="revert" value="true">
+    <input name="form_key" type="hidden" value="<?php echo $block->getFormKey() ?>" />
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action submit secondary" title="Save">
+                <span>Revert</span>
+            </button>
+        </div>
+    </div>
+</form>
+<p><i>Revert all changes.</i></p>
